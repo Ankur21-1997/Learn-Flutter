@@ -10,6 +10,7 @@ class Day1 extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
+          Text('Git Connected Code'),
           ElevatedButton(onPressed: (){ variableType();}, child: Text('variableType')),
           ElevatedButton(onPressed: (){ loopType();}, child: Text('Loops')),
           ElevatedButton(onPressed: (){ nullSafety();}, child: Text('Null Safety')),
@@ -88,7 +89,6 @@ void nullSafety(){
 }
 
 void stringInterpolation(){
-
   String name = 'Ankur';
   printF('Basic: Hello, $name');
 
