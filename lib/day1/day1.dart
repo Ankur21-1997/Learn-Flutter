@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
-import 'globleVariable.dart';
+import '../globleVariable.dart';
+import 'day1_practical1.dart';
 
 class Day1 extends StatelessWidget {
   const Day1({super.key});
 
   @override
   Widget build(BuildContext context) {
+    List<int> numList = [];
+    final listController = TextEditingController();
+
     return Scaffold(
       body: Column(
         children: [
@@ -15,6 +19,16 @@ class Day1 extends StatelessWidget {
           ElevatedButton(onPressed: (){ loopType();}, child: Text('Loops')),
           ElevatedButton(onPressed: (){ nullSafety();}, child: Text('Null Safety')),
           ElevatedButton(onPressed: (){ stringInterpolation();}, child: Text('String Interpolation')),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(width:50,child: TextField(controller: listController,)),
+              ElevatedButton(onPressed: (){ numList.add(int.tryParse(listController.text) ?? 0);listController.clear();}, child: Text('Add')),
+              ElevatedButton(onPressed: (){ numList = [];}, child: Text('Clear')),
+            ],
+          ),
+          ElevatedButton(onPressed: (){ day1Practical1(numList);}, child: Text('Practical 1')),
+
         ],
       ),
     );

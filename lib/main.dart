@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:practice/day1.dart';
+import 'package:practice/day1/day1.dart';
 
 void main() {
   runApp(const MyApp());
