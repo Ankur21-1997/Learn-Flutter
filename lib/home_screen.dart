@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:practice/day1/day1.dart';
 import 'package:practice/day2/day2.dart';
+import 'package:practice/day3/day3.dart';
 import 'package:practice/globleVariable.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -73,6 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
         return Day1();
       case 2:
         return Day2();
+      case 3:
+        return Day3();
 
       default:
         return Center(child: Text("Page Not Found"));
