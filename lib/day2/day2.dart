@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:practice/day2/day2_practical1.dart';
 import 'package:practice/globleVariable.dart';
@@ -73,6 +75,12 @@ class Day2 extends StatelessWidget {
 
             printF('END');
           }, child: Text('Future / Async')),
+          ElevatedButton(onPressed: () {
+            startStreamDemo();
+          }, child: Text('Stream')),
+          ElevatedButton(onPressed: () {
+            stopStreamDemo();
+          }, child: Text('StopStream')),
           // ElevatedButton(onPressed: () {
           //   nullSafety();
           // }, child: Text('Null Safety')),
@@ -149,4 +157,39 @@ Future<List<String>> fetchOrders() async {
   await Future.delayed(Duration(seconds: 2));
   return ['Laptop', 'Mobile', 'TV'];
 }
+
+///--- Stream
+
+StreamSubscription<int>? _subscription;
+StreamController<int>? _controller;
+
+void startStreamDemo() {
+  _controller = StreamController<int>();
+  int counter = 1;
+
+  // Emit every second
+  Timer.periodic(Duration(seconds: 1), (timer) {
+    _controller!.add(counter);
+    printF("Added: $counter");
+
+    if (counter == 10) {
+      timer.cancel();
+      _controller!.close();
+    }
+
+    counter++;
+  });
+
+  // Listen + store subscription
+  _subscription = _controller!.stream.listen(
+        (value) => printF("Received: $value"),
+    onDone: () => printF("Stream closed"),
+  );
+}
+
+void stopStreamDemo() {
+  _subscription?.cancel();
+  printF("Stream manually stopped");
+}
+
 
