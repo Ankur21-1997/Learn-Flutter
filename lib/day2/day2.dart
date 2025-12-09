@@ -206,9 +206,13 @@ void exceptionHandling() {
 
     printF("Result: $result");
   }
+  ///--- old dart but use for catch Zero error
   // on IntegerDivisionByZeroException {
   //   printF("Error: Cannot divide a number by zero.");
   // }
+  on UnsupportedError {  // this is use to replace IntegerDivisionByZeroException
+    printF("Error: Cannot divide a number by zero.");
+  }
   catch (e) {
     printF("Unknown error: $e");
   }
