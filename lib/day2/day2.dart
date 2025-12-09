@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:practice/day2/day2_practical1.dart';
+import 'package:practice/day2/day2_try_model.dart';
 import 'package:practice/globleVariable.dart';
 
 class Day2 extends StatelessWidget {
@@ -84,6 +85,20 @@ class Day2 extends StatelessWidget {
           ElevatedButton(onPressed: () {
             exceptionHandling();
           }, child: Text('Exception Handling')),
+          ElevatedButton(onPressed: () {
+            Map<String, dynamic> json = {
+              "id": 10,
+              "name": "Ankur",
+              "email": "ankur@test.com"
+            };
+
+            // JSON → Model
+            User u = User.fromJson(json);
+            printF(u.name); // Ankur
+
+            // Model → JSON
+            printF('${u.toJson()}');
+          }, child: Text('Model Check')),
           // ElevatedButton(onPressed: () {
           //   nullSafety();
           // }, child: Text('Null Safety')),
