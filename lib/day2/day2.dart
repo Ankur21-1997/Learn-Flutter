@@ -77,10 +77,13 @@ class Day2 extends StatelessWidget {
           }, child: Text('Future / Async')),
           ElevatedButton(onPressed: () {
             startStreamDemo();
-          }, child: Text('Stream')),
+          }, child: Text('Start Stream')),
           ElevatedButton(onPressed: () {
             stopStreamDemo();
-          }, child: Text('StopStream')),
+          }, child: Text('Stop Stream')),
+          ElevatedButton(onPressed: () {
+            exceptionHandling();
+          }, child: Text('Exception Handling')),
           // ElevatedButton(onPressed: () {
           //   nullSafety();
           // }, child: Text('Null Safety')),
@@ -193,3 +196,23 @@ void stopStreamDemo() {
 }
 
 
+void exceptionHandling() {
+  try {
+    int a = 10;
+    int b = 0;
+
+    // This will throw an exception
+    int result = a ~/ b;
+
+    printF("Result: $result");
+  }
+  // on IntegerDivisionByZeroException {
+  //   printF("Error: Cannot divide a number by zero.");
+  // }
+  catch (e) {
+    printF("Unknown error: $e");
+  }
+  finally {
+    printF("Program completed.");
+  }
+}
