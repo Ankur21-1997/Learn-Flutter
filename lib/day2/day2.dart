@@ -62,6 +62,17 @@ class Day2 extends StatelessWidget {
               printF("${p.id} → ${p.name} → ₹${p.price}");
             }
           }, child: Text('Factory constructor')),
+          ElevatedButton(onPressed: () async {
+            printF('START');
+
+            final user = await fetchUser();
+            printF('User loaded: $user');
+
+            final orders = await fetchOrders();
+            printF('Orders loaded: $orders');
+
+            printF('END');
+          }, child: Text('Future / Async')),
           // ElevatedButton(onPressed: () {
           //   nullSafety();
           // }, child: Text('Null Safety')),
@@ -125,3 +136,17 @@ class B extends A {
     return '${super.greet()} Received from B';
   }
 }
+
+///--- Future & Async
+Future<String> fetchUser() async {
+  printF('Fetching user...');
+  await Future.delayed(Duration(seconds: 2)); // simulate network
+  return 'Ankur (User)';
+}
+
+Future<List<String>> fetchOrders() async {
+  printF('Fetching orders...');
+  await Future.delayed(Duration(seconds: 2));
+  return ['Laptop', 'Mobile', 'TV'];
+}
+
